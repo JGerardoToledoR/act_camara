@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PWA Cámara</title>
 
+    <!-- Compatibilidad PWA -->
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="Cámara PWA">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="apple-touch-icon" href="192.png">
 
     <meta name="theme-color" content="#000000">
     <link rel="manifest" href="./manifest.json">
+
+    <!-- Icono para iPhone -->
+    <link rel="apple-touch-icon" href="icon-192.png">
 
     <style>
         body {
@@ -21,18 +23,18 @@
         }
         #cameraContainer {
             display: none;
+            margin-top: 20px;
         }
         #canvas {
-            margin-top: 15px;
             display: none;
-            border: 2px solid black;
+            border: 2px solid #000;
+            margin-top: 10px;
         }
     </style>
 </head>
 
 <body>
-
-    <h2>PWA Cámara iOS ✅</h2>
+    <h2>Cámara PWA</h2>
 
     <button id="openCamera">📷 Abrir Cámara</button>
 

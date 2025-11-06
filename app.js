@@ -7,12 +7,12 @@ const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
 let stream = null;
-let currentFacingMode = "environment"; // 📌 Trasera por defecto en iOS
+let currentFacingMode = "environment"; // Trasera por defecto
 
 // ✅ Abrir cámara
 async function openCamera() {
     try {
-        stopCamera();
+        stopCamera(); // Detener cámara si ya está activa
 
         stream = await navigator.mediaDevices.getUserMedia({
             video: {
@@ -26,17 +26,20 @@ async function openCamera() {
         await video.play();
 
         cameraContainer.style.display = "block";
+        openCameraBtn.disabled = true;
+
     } catch (error) {
-        console.error(error);
+        console.error("Error cámara:", error);
+
         if (error.name === "NotAllowedError") {
-            alert("Permiso de cámara denegado. Habilítalo en Configuración → Safari → Cámara");
+            alert("Debes permitir el uso de la cámara.\nConfigura: Safari > Cámara > Permitir");
         } else {
             alert("No se pudo acceder a la cámara");
         }
     }
 }
 
-// ✅ Tomar foto clara
+// ✅ Tomar foto con buena calidad
 function takePhoto() {
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
@@ -44,28 +47,26 @@ function takePhoto() {
     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
     canvas.style.display = "block";
 
-    const imgData = canvas.toDataURL("image/png");
-    localStorage.setItem("fotoCamarapwa_iOS", imgData);
+    const img = canvas.toDataURL("image/png");
+    localStorage.setItem("fotoPWA", img);
 
-    console.log("✅ Foto guardada");
+    console.log("✅ Foto guardada en localStorage");
 }
 
-// ✅ Cambiar cámara (solo iPhones con doble lente o más)
+// ✅ Cambiar cámara (si iPhone tiene más de una)
 async function switchCamera() {
-    currentFacingMode =
-        currentFacingMode === "environment" ? "user" : "environment";
-
+    currentFacingMode = currentFacingMode === "environment" ? "user" : "environment";
     await openCamera();
 }
 
-// ✅ Detener cámara
+// ✅ Detener cámara activa
 function stopCamera() {
     if (stream) {
         stream.getTracks().forEach(track => track.stop());
     }
 }
 
-// ✅ Eventos
+// ✅ Listeners
 openCameraBtn.addEventListener("click", openCamera);
 takePhotoBtn.addEventListener("click", takePhoto);
 switchCameraBtn.addEventListener("click", switchCamera);
