@@ -18,79 +18,96 @@
     <style>
         body {
             margin: 0;
-            font-family: "Arial", sans-serif;
-            background: #f4f5f7;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            font-family: "Poppins", sans-serif;
             min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             padding: 15px;
+            background: linear-gradient(135deg, #1d1e22, #383b47);
+            color: #fff;
         }
-        
+
         .container {
             width: 100%;
-            max-width: 450px;
-            background: #ffffff;
+            max-width: 420px;
+            background: rgba(255,255,255,0.08);
             border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            padding: 22px;
             text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.35);
         }
 
         h1 {
-            font-size: 1.4rem;
-            color: #333;
-            margin-bottom: 15px;
+            font-size: 1.45rem;
+            margin: 0 0 15px;
+            font-weight: 600;
         }
 
-        #video {
+        #video, #photo {
             width: 100%;
-            border-radius: 12px;
+            border-radius: 16px;
             background: #000;
+            margin-top: 10px;
         }
 
-        #photo {
-            width: 100%;
-            margin-top: 15px;
-            border-radius: 12px;
-            display: none;
-        }
-
-        button {
-            width: 100%;
-            padding: 14px;
-            font-size: 1rem;
-            margin-top: 15px;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: 0.3s;
-            font-weight: bold;
-        }
+        #photo { display: none; }
 
         #capture-btn {
-            background: #007aff;
-            color: white;
+            margin-top: 18px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 5px solid #e6e6e6;
+            cursor: pointer;
+            transition: .15s;
         }
-        #capture-btn:hover { background: #005fcc; }
+
+        #capture-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 15px rgba(255,255,255,0.3);
+        }
 
         #restart-btn {
+            width: 100%;
+            padding: 13px;
+            margin-top: 18px;
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 600;
             background: #ff3b30;
             color: white;
             display: none;
+            border: none;
+            cursor: pointer;
+            transition: .25s;
         }
-        #restart-btn:hover { background: #d92c24; }
+
+        #restart-btn:hover {
+            background: #d92c25;
+        }
+
+        footer {
+            font-size: .75rem;
+            margin-top: 14px;
+            opacity: .6;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h1>PWA - Cámara</h1>
+        <h1>Captura una foto 📸</h1>
+
         <video id="video" autoplay playsinline></video>
-        <img id="photo" alt="Captura"/>
-        <button id="capture-btn">Tomar foto</button>
+        <img id="photo" alt="Foto tomada">
+
+        <button id="capture-btn"></button>
         <button id="restart-btn">Tomar otra</button>
+
+        <footer>PWA Cámara — iPhone & Desktop Ready ✅</footer>
     </div>
 
     <script src="./app.js"></script>
