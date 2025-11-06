@@ -78,11 +78,13 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 10px;
-            max-height: 400px;
-            overflow-y: auto;
+            /* REMOVEMOS max-height fijo para que crezca automáticamente */
+            min-height: 100px;
             padding: 10px;
             background: rgba(0,0,0,0.2);
             border-radius: 12px;
+            /* Permitir crecimiento vertical ilimitado */
+            overflow-y: visible;
         }
 
         .photo-item {
@@ -90,6 +92,7 @@
             border-radius: 8px;
             overflow: hidden;
             aspect-ratio: 3/4;
+            background: #333;
         }
 
         .photo-item img {
@@ -130,6 +133,17 @@
             padding: 20px;
             color: #888;
             font-style: italic;
+        }
+
+        .storage-warning {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 10px;
+            background: #ff9500;
+            color: white;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            margin-top: 10px;
         }
 
         footer {
