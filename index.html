@@ -41,16 +41,15 @@
     <button id="openCamera">Abrir Cámara</button>
 
     <div id="cameraContainer">
-        <video id="video" autoplay width="320" height="240"></video><br>
-        <button id="takePhoto">Tomar Foto</button>
+        <video id="video" playsinline autoplay width="320" height="240"></video><br>
+
+        <button id="takePhoto">📸 Tomar Foto</button>
+        <button id="switchCamera">🔄 Cambiar Cámara</button>
+
+        <canvas id="canvas" style="display:none;"></canvas>
     </div>
 
-    <canvas id="canvas" width="320" height="240"></canvas>
-
-    <script src="./app.js"></script>
-
-    <script src="./main.js"></script>
-
 </body>
+
 
 </html>
