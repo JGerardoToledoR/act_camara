@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PWA Cámara</title>
-    <meta name="mobile-web-app-capable" content="yes">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Cámara PWA">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <link rel="apple-touch-icon" href="192.png">
@@ -16,17 +16,12 @@
     <style>
         body {
             font-family: Arial;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            text-align: center;
             padding: 20px;
         }
-
         #cameraContainer {
             display: none;
-            margin-top: 20px;
         }
-
         #canvas {
             margin-top: 15px;
             display: none;
@@ -37,19 +32,18 @@
 
 <body>
 
-    <h1>PWA Cámara</h1>
-    <button id="openCamera">Abrir Cámara</button>
+    <h2>PWA Cámara iOS ✅</h2>
+
+    <button id="openCamera">📷 Abrir Cámara</button>
 
     <div id="cameraContainer">
-        <video id="video" playsinline autoplay width="320" height="240"></video><br>
-
+        <video id="video" playsinline autoplay></video><br>
         <button id="takePhoto">📸 Tomar Foto</button>
         <button id="switchCamera">🔄 Cambiar Cámara</button>
-
-        <canvas id="canvas" style="display:none;"></canvas>
     </div>
 
+    <canvas id="canvas"></canvas>
+
+    <script src="./app.js"></script>
 </body>
-
-
 </html>
